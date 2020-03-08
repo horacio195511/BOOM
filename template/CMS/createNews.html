@@ -1,0 +1,16 @@
+{% extends '../extends/base.html' %}
+
+{% block title %}
+    <title>Create News-BOOM CMS</title>
+{% endblock%}
+
+{% block body %}
+    <form name="news" method="post">
+        {% csrf_token%}
+        <label for="title">Title</label>
+        <input name="title" id="title" type="text">
+        <label for="article">Article</label>
+        <input name="article" id="article" type="text">
+        <input type="submit" value="Create!">
+    </form>
+{% endblock%}

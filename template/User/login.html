@@ -1,0 +1,18 @@
+{% extends '../extends/base.html'%}
+
+{% block title%}
+<title>Login-BOOM</title>
+{% endblock %}
+
+{% block body %}
+{{ message }}
+<form method="post" name="login">
+    {% csrf_token%}
+    <label for="id-username">Username:</label>
+    <input name="username" id="id-username" type="text">
+    <label for="id-password">password:</label>
+    <input name="password" id="id-password" type="password">
+    <input type="submit" value="Login">
+</form>
+not a member yet?<a href="register">register</a>
+{% endblock %}

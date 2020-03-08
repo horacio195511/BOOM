@@ -1,0 +1,16 @@
+{% extends '../extends/base.html' %}
+
+{% block title %}
+    <title>Create Thing-BOOM</title>
+{% endblock %}
+
+{% block body %}
+    <form name="createThing" method="post" enctype="multipart/form-data">
+        {% csrf_token%}
+        <label for="name">Name</label>
+        <input type="text" name="name" id="name">
+        <label for="file">File</label>
+        <input type="file" name="file" id="file">
+        <input type="submit" value="Create!">
+    </form>
+{% endblock %}

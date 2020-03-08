@@ -1,0 +1,20 @@
+{% extends 'extends/base.html'%}
+
+{% block title%}
+<title>Home-BOOM</title>
+{% endblock %}
+
+{% block body %}
+<!--introduction-->
+<div>
+    <h1>introduction</h1>
+    <h3>welcome to BOOM, a manufacturing center for maker and creator</h3>
+</div>
+<!--news-->
+{% for news in news_list %}
+<div>
+    <h1>{{ news.title }}</h1>
+    <h3>{{ news.article }}</h3>
+</div>
+{% endfor %}
+{% endblock %}

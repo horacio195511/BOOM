@@ -1,0 +1,11 @@
+{% extends '../extends/base.html' %}
+
+{% block title %}
+    <title>Market-BOOM</title>
+{% endblock%}
+
+{% block body %}
+    {% for thing in thing_list%}
+    <h2>{{ thing.name }}</h2>
+    {% endfor %}
+{% endblock%}
