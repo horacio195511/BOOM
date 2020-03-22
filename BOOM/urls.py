@@ -21,8 +21,8 @@ from Market.views import createThing, market
 
 urlpatterns = [
     re_path(r'register/$', register),
-    re_path(r'login/$', mlogin),
-    re_path(r'home/$',home),
+    re_path(r'Login/$', mlogin),
+    re_path(r'home/$', home),
     re_path(r'market/$', market),
     path('admin/', admin.site.urls),
     path('', home),

@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
 from CMS.models import NEWS
+from User.models import Customer
 
 
 # Create your views here.
@@ -9,12 +10,12 @@ from CMS.models import NEWS
 
 def home(request):
     if request.method == 'GET':
-        news = []
+        news_set = []
         # query for news
-        for a in range(0, 3):
-            # TODO: we get the last three news from database is a better implementation.
-            news.append(NEWS.objects.get(pk=(a + 1)))
-        context = {'news_list': news}
+        for news in NEWS.objects.all():
+            news_set.append(news)
+        context = {'news_list': news_set[-3:]}
+        # TODO: but the image won't display here.
         return render(request, 'home.html', context)
 
 
@@ -25,7 +26,8 @@ def register(request):
         username = request.POST['username']
         email = request.POST['email']
         password = request.POST['password']
-        user = User.objects.create_user(username, email, password)
+        image = request.FILES['image']
+        user = User.objects.create_user(username, email, password, image)
         user.save()
         return render(request, 'Action/success.html', {'action': 'register'})
 

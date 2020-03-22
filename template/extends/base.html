@@ -8,9 +8,18 @@
 <body>
 <!-- the hyper reference here would screw up the url, and looks very ugly -->
 <a href="home">Home</a>
-<a href="login">Login</a>
+<!-- useraction: if the user have logged in, set to profile, otherwise set to log in.-->
+<a href="Login">Login</a>
 <a href="market">Market</a>
-    {% block body %}
-    {% endblock %}
+{% block body %}
+{% endblock %}
 </body>
 </html>
+
+<script>
+    // get the content of cookie
+    // see if there are sessionID
+    // change the useraction to login or to profile
+
+
+</script>

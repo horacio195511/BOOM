@@ -5,12 +5,25 @@
 {% endblock%}
 
 {% block body %}
-    <form name="news" method="post">
+    <form name="news" method="post" id="news" enctype="multipart/form-data">
         {% csrf_token%}
-        <label for="title">Title</label>
-        <input name="title" id="title" type="text">
-        <label for="article">Article</label>
-        <input name="article" id="article" type="text">
-        <input type="submit" value="Create!">
+        <table>
+            <tr>
+                <th><label for="title">Title</label></th>
+                <th><input name="title" id="title" type="text"></th>
+            </tr>
+            <tr>
+                <th><label for="image">Image</label></th>
+                <th><input type="file" name="image" id="image"></th>
+            </tr>
+            <tr>
+                <th><label for="article">Article</label></th>
+                <th><textarea name="article" form="news" id="article" cols="20" rows="10"></textarea></th>
+            </tr>
+            <tr>
+                <th></th>
+                <th><input type="submit" value="Create!"></th>
+            </tr>
+        </table>
     </form>
 {% endblock%}

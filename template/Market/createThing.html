@@ -7,10 +7,27 @@
 {% block body %}
     <form name="createThing" method="post" enctype="multipart/form-data">
         {% csrf_token%}
-        <label for="name">Name</label>
-        <input type="text" name="name" id="name">
-        <label for="file">File</label>
-        <input type="file" name="file" id="file">
-        <input type="submit" value="Create!">
+        <table>
+            <tr>
+                <th><label for="name">Name</label></th>
+                <th><input type="text" name="name" id="name"></th>
+            </tr>
+            <tr>
+                <th><label for="file">File</label></th>
+                <th><input type="file" name="file" id="file"></th>
+            </tr>
+            <tr>
+                <th><label for="image">Image</label></th>
+                <th><input type="file" name="image" id="image"></th>
+            </tr>
+            <tr>
+                <th><label for="description">Description</label></th>
+                <th><textarea name="description" form="createThing" cols="30" rows="10"></textarea></th>
+            </tr>
+            <tr>
+                <th></th>
+                <th><input type="submit" value="Create!"></th>
+            </tr>
+        </table>
     </form>
 {% endblock %}

@@ -10,7 +10,8 @@ def createNews(request):
     elif request.method == 'POST':
         title = request.POST['title']
         article = request.POST['article']
-        news = NEWS(title=title, article=article)
+        image = request.FILES['image']
+        news = NEWS(title=title, article=article, image=image)
         news.save()
         return render(request, 'Action/Success.html', {'action': 'create news'})
 
