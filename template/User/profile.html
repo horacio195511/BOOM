@@ -6,9 +6,30 @@
 
 {% block body %}
 <h1>Personal Information</h1>
-
+<table>
+    <tr>
+        <th>Image</th>
+        <th><img src="media/{{ user.image }}" alt="{{ user.username }}"></th>
+    </tr>
+    <tr>
+        <th>Username</th>
+        <th>{{ user.username }}</th>
+    </tr>
+</table>
 <h1>Thing Information</h1>
-
+{% for thing in thing_list %}
+<table>
+    <tr>
+        <th>Image</th>
+        <th>{{ thing.image }}</th>
+    </tr>
+    <tr>
+        <th>Name</th>
+        <th>{{ thing.name }}</th>
+    </tr>
+</table>
+{% endfor %}
 <h1>Printer Information</h1>
+<!-- add printer model and app -->
 
 {% endblock %}

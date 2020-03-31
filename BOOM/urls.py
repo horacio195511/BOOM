@@ -15,18 +15,19 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, re_path
-from User.views import register, mlogin, home
+from User.views import register, mlogin, home, profile
 from CMS.views import createNews, cms
 from Market.views import createThing, market
 
 urlpatterns = [
     re_path(r'register/$', register),
-    re_path(r'Login/$', mlogin),
+    re_path(r'login/$', mlogin),
     re_path(r'home/$', home),
     re_path(r'market/$', market),
+    re_path(r'profile', profile),
     path('admin/', admin.site.urls),
     path('', home),
     path('CMS/', cms),
-    path('CMS/createnews/', createNews),
-    path('CMS/creatething/', createThing)
+    path('createnews/', createNews),
+    path('creatething/', createThing)
 ]

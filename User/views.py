@@ -3,6 +3,8 @@ from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
 from CMS.models import NEWS
 from User.models import Customer
+from Market.models import Thing
+from User.models import Customer
 
 
 # Create your views here.
@@ -26,10 +28,17 @@ def register(request):
         username = request.POST['username']
         email = request.POST['email']
         password = request.POST['password']
+        double_password = request.POST['double_password']
         image = request.FILES['image']
-        user = User.objects.create_user(username, email, password, image)
-        user.save()
-        return render(request, 'Action/success.html', {'action': 'register'})
+        if password == double_password:
+            base_user = User.objects.create_user(username, email, password)
+            base_user.save()
+            base_user = User.objects.get(username=username)
+            user = Customer(base_user, image)
+            user.save()
+            return render(request, 'Action/success.html', {'action': 'register'})
+        else:
+            return render(request, 'User/register.html', {'op_error': 'invalidate second password'})
 
 
 def mlogin(request):
@@ -44,3 +53,12 @@ def mlogin(request):
             return render(request, 'Action/success.html', {'action': 'login'})
         else:
             return render(request, 'User/login.html', {'message': 'wrong password or username'})
+
+
+def profile(request):
+    if request.method == 'GET':
+        user = request.user
+        username = user.username
+        userimage = user.image
+        things = Thing.object.get(owner=user)
+        return render(request, 'User/profile.html')

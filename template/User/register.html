@@ -21,6 +21,10 @@
             <th><input name='password' id="password" type="password"></th>
         </tr>
         <tr>
+            <th><label for="double_password">Double Check Password</label></th>
+            <th><input name="double_password" id="double_password" type="password"></th>
+        </tr>
+        <tr>
             <th><label for="image">Image</label></th>
             <th><input id="image" name="image" type="file"></th>
         </tr>
@@ -30,4 +34,5 @@
         </tr>
     </table>
 </form>
+{{ op_error }}
 {% endblock %}
