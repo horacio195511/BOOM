@@ -4,3 +4,4 @@ class MaxLength:
     title = 100
     article = 1000
     image = 100
+    state = 50

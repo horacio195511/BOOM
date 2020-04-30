@@ -8,10 +8,11 @@
 <body>
 <!-- the hyper reference here would screw up the url, and looks very ugly -->
 <a href="home">Home</a>
-<!-- useraction: if the user have logged in, set to profile, otherwise set to log in.-->
-<a href="login">Login</a>
-<a href="profile">Profile</a>
-<a href="market">Market</a>
+<!-- the login link should disappear after logged in -->
+<a href="/login/">Login</a>
+<a href="/profile/">Profile</a>
+<a href="/market/">Market</a>
+<a href="/logout/">Logout</a>
 {% block body %}
 {% endblock %}
 </body>

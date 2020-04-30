@@ -1,11 +1,13 @@
 {% extends '../extends/base.html' %}
 
 {% block title %}
-    <title>Market-BOOM</title>
+<title>Market-BOOM</title>
 {% endblock%}
 
 {% block body %}
-    {% for thing in thing_list%}
-    <h2>{{ thing.image }}</h2>
-    {% endfor %}
+{% for thing in thing_list%}
+<h1>{{ thing.name }}</h1>
+<img src="/media/{{ thing.image }}" alt="{{ thing.name }}" height="100" width="100">
+<h2>{{ thing.description }}</h2>
+{% endfor %}
 {% endblock%}

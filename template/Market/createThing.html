@@ -5,7 +5,7 @@
 {% endblock %}
 
 {% block body %}
-    <form name="createThing" method="post" enctype="multipart/form-data">
+    <form id="createThing" name="createThing" method="post" enctype="multipart/form-data">
         {% csrf_token%}
         <table>
             <tr>
@@ -22,7 +22,8 @@
             </tr>
             <tr>
                 <th><label for="description">Description</label></th>
-                <th><textarea name="description" form="createThing" cols="30" rows="10"></textarea></th>
+                <th><textarea id="description" name="description" form="createThing" cols="30" rows="10"></textarea>
+                </th>
             </tr>
             <tr>
                 <th></th>
@@ -30,4 +31,5 @@
             </tr>
         </table>
     </form>
+
 {% endblock %}

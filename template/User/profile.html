@@ -9,7 +9,7 @@
 <table>
     <tr>
         <th>Image</th>
-        <th><img src="media/{{ user.image }}" alt="{{ user.username }}"></th>
+        <th><img src="/media/{{ userimage }}" alt="{{ user.username }}" height="100" width="100"></th>
     </tr>
     <tr>
         <th>Username</th>
@@ -17,6 +17,7 @@
     </tr>
 </table>
 <h1>Thing Information</h1>
+<a href="creatething">Create Thing!</a>
 {% for thing in thing_list %}
 <table>
     <tr>
