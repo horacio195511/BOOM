@@ -17,10 +17,8 @@ from django.contrib import admin
 from django.urls import path, re_path
 from User.views import register, mlogin, mlogout, home, profile
 from CMS.views import createNews, cms
-from Market.views import createThing, createOrder, market
+from Market.views import createThing, market
 
-# TODO: the url setting now would infinitely concatethe url in the back, how to make it short?
-#   use
 urlpatterns = [
     re_path(r'register/$', register),
     re_path(r'login/$', mlogin),
@@ -29,7 +27,6 @@ urlpatterns = [
     re_path(r'market/$', market),
     re_path(r'profile/$', profile),
     re_path('creatething/$', createThing),
-    re_path('createorder/$', createOrder),
     path('admin/', admin.site.urls),
     path('', home),
     path('CMS/', cms),
