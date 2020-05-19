@@ -1,5 +1,5 @@
-from django.shortcuts import render
-from Market.models import Thing
+from django.shortcuts import render, redirect
+from Market.models import Thing, Order
 
 
 # Create your views here.
@@ -34,14 +34,25 @@ def createOrder(request, thingpk):
     if request.method == 'GET':
         # TODO: take the primary key of selected object as input, and display according information
         # TODO: because we want to create multiple order in a time so the fronend should be modified
-        return render(request, 'Market/createOrder.html')
+        thing = Thing.objects.get(pk=thingpk)
+        return render(request, 'Market/createOrder.html', {'thing': thing})
     elif request.method == 'POST':
         # TODO: store the order into cookie
         # TODO: create order state system.
-        pk = request.POST[thingpk]
+        pk = request.POST['thingpk']
+        cartID = giveID()
+        user = request.User
+        thing = Thing.objects.get(pk=thingpk)
+        amount = request.POST['amount']
+        price = amount * Thing.price
+        # TODO: create state trace system
+        state = 'CREATED'
+        # TODO: create order dispatcher, and the order management sytem
+        maker = dispatcher()
+        order = Order()
+        return redirect('/market/')
 
-
-def confirmOrder(request):
-    if request.method == 'GET':
-        return render(request, 'Market/confirmOrder.html')
-    elif request.method == 'POST':
+# def confirmOrder(request):
+#     if request.method == 'GET':
+#         return render(request, 'Market/confirmOrder.html')
+#     elif request.method == 'POST':

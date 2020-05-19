@@ -1,6 +1,7 @@
 from django.db import models
 from BOOM.db_param import MaxLength
 from django.contrib.auth.models import User
+from User.models import Customer
 
 
 # Create your models here.
@@ -23,8 +24,8 @@ class Order(models.Model):
     # TODO: cartID should be generated from userID and datetime
     cartID = models.IntegerField()
     created_datetime = models.DateTimeField(auto_now=True)
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
-    maker = models.ForeignKey(User, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='user')
+    maker = models.ForeignKey(User, on_delete=models.CASCADE, related_name='maker')
     thing = models.ForeignKey(Thing, on_delete=models.CASCADE)
     amount = models.IntegerField()
     price = models.IntegerField()
