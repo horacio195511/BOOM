@@ -17,4 +17,7 @@ def createNews(request):
 
 
 def cms(request):
+    # TODO: control center for the whole website, got the highest authority to all file
+    #   customer account, thing, order and other shit.
+    # TODO: build the authorization system
     return render(request, 'CMS/control_center.html')

@@ -19,9 +19,9 @@ class Thing(models.Model):
 
 class Order(models.Model):
     # TODO: makemigration to the database
-    # TODO: an order that could be a set of order, like a shopping cart
+    # TODO: several order owned by the same user would have the same cartID, in session
     # cartID is used to group the order in the same cart, which also make thing replicate more flexible
-    # TODO: cartID should be generated from userID and datetime
+    # set to 0 after
     cartID = models.IntegerField()
     created_datetime = models.DateTimeField(auto_now=True)
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='user')
@@ -29,4 +29,6 @@ class Order(models.Model):
     thing = models.ForeignKey(Thing, on_delete=models.CASCADE)
     amount = models.IntegerField()
     price = models.IntegerField()
+    # state is a number between 1~22
     state = models.CharField(max_length=MaxLength.state)
+    sentTo = models.CharField(max_length=MaxLength.address)

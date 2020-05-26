@@ -23,6 +23,7 @@ STATICFILES_DIRS = [
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'hym21m2km5-#%83p-#dhxup3x%=sm80d_#sc9yb+g*zpmo#b5^'
+GOOGLEMAPAPIKEY = 'AIzaSyDZWqVPvMlzfETPIvrFkX1gNM6ab7WrIGI'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
