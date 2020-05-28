@@ -1,4 +1,6 @@
 from django.shortcuts import render
+from django.http import HttpResponse
+from BOOM.modelform import CreateNewsForm
 from CMS.models import NEWS
 
 
@@ -6,14 +8,16 @@ from CMS.models import NEWS
 
 def createNews(request):
     if request.method == 'GET':
-        return render(request, 'CMS/createNews.html')
+        form = CreateNewsForm()
+        context = {'title': 'NEWS-Create',
+                   'action': 'createnews',
+                   'form': form,
+                   'submitTitle': 'Create'}
+        return render(request, 'Form.html', context)
     elif request.method == 'POST':
-        title = request.POST['title']
-        article = request.POST['article']
-        image = request.FILES['image']
-        news = NEWS(title=title, article=article, image=image)
-        news.save()
-        return render(request, 'Action/Success.html', {'action': 'create news'})
+        form = CreateNewsForm(request.POST)
+        form.save()
+        return HttpResponse('NEWS Created')
 
 
 def cms(request):

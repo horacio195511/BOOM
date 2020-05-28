@@ -18,40 +18,41 @@ from django.urls import path, re_path
 from User.views import register, mlogin, mlogout, home, profile
 from CMS.views import createNews, cms
 from Market.views import createThing, createOrder, market
+from Printer.views import createPrinter
 
 # TODO: the url setting now would infinitely concatethe url in the back, how to make it short?
 #   use
 urlpatterns = [
-    re_path(r'register/$', register, name='boom-register'),
-    re_path(r'login/$', mlogin, name='boom-login'),
-    re_path(r'logout/$', mlogout, name='boom-logout'),
+    re_path(r'usercreate/$', usercreate, name='boom-register'),
+    re_path(r'userlogin/$', userlogin, name='boom-login'),
+    re_path(r'userlogout/$', userlogout, name='boom-logout'),
     re_path(r'home/$', home, name='boom-home'),
     re_path(r'market/$', market, name='boom-market'),
-    re_path(r'profile/$', profile, name='boom-profile'),
-    re_path(r'creatething/$', createThing, name='boom-creatething'),
-    re_path(r'createorder/(?P<thingpk>[0-9]*)/$', createOrder, name='createorder'),
-    # api url
-    # news, thing, order could be accessed by user
-    re_path(r'api/usercreate/$'),
-    re_path(r'api/userlogin/$'),
-    re_path(r'api/userlogout/$'),
-    re_path(r'api/userprofile/$'),
-    re_path(r'api/userdelete/$'),
-    re_path(r'api/userupdate/$'),
-    re_path(r'api/thingcreate/$'),
-    re_path(r'api/thingdelete/$'),
-    re_path(r'api/thingupdate/$'),
-    re_path(r'api/thingprofile/$'),
-    re_path(r'api/ordercreate/$'),
-    re_path(r'api/ordercancel/$'),
-    re_path(r'api/orderprofile/$'),
-    # news entity should only be accessed by sit manager
-    re_path(r'api/newscreate/$'),
-    re_path(r'api/newsupdate/$'),
-    re_path(r'api/newsdelete/$'),
-    re_path(r'api/newsprofile/$'),
+    re_path(r'userprofile/$', userprofile, name='boom-profile'),
+    re_path(r'thingcreate/$', thingcreate, name='boom-creatething'),
+    re_path(r'ordercreate/(?P<thingpk>[0-9]*)/$', ordercreate, name='createorder'),
+    re_path(r'printercreate/$', printercreate),
+    re_path(r'newscreate/$', newscreate),
     path('admin/', admin.site.urls),
     path('', home),
-    path('CMS/', cms),
-    path('createnews/', createNews),
+    # api url
+    # news, thing, order could be accessed by user
+    # re_path(r'api/usercreate/$'),
+    # re_path(r'api/userlogin/$'),
+    # re_path(r'api/userlogout/$'),
+    # re_path(r'api/userprofile/$'),
+    # re_path(r'api/userdelete/$'),
+    # re_path(r'api/userupdate/$'),
+    # re_path(r'api/thingcreate/$'),
+    # re_path(r'api/thingdelete/$'),
+    # re_path(r'api/thingupdate/$'),
+    # re_path(r'api/thingprofile/$'),
+    # re_path(r'api/ordercreate/$'),
+    # re_path(r'api/ordercancel/$'),
+    # re_path(r'api/orderprofile/$'),
+    # # news entity should only be accessed by sit manager
+    # re_path(r'api/newscreate/$'),
+    # re_path(r'api/newsupdate/$'),
+    # re_path(r'api/newsdelete/$'),
+    # re_path(r'api/newsprofile/$'),
 ]

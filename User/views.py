@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
 from CMS.models import NEWS
+from BOOM.modelform import LoginForm, RegisterForm
 from User.models import Customer
 
 
@@ -15,37 +16,30 @@ def home(request):
         return render(request, 'home.html', context)
 
 
-def register(request):
+def userCreate(request):
     if request.method == 'GET':
-        return render(request, 'User/register.html')
+        form = RegisterForm()
+        context = {'title': 'User-Register',
+                   'form': form,
+                   'submitTitle': 'Register'}
+        return render(request, 'Form.html', context)
     elif request.method == 'POST':
-        username = request.POST['username']
-        email = request.POST['email']
-        password = request.POST['password']
-        double_password = request.POST['double_password']
-        image = request.FILES['image']
-        if password == double_password:
-            base_user = User.objects.create_user(username, email, password)
-            base_user.save()
-            customer = Customer(user_id=base_user.id, image=image)
-            customer.save()
-            return render(request, 'Action/success.html', {'action': 'register'})
-        else:
-            return render(request, 'User/register.html', {'op_error': 'invalidate second password'})
+        form = RegisterForm(request.POST)
+        form.save()
+        return render(request, 'Action/success.html', {'action': 'user create'})
 
 
-def mlogin(request):
+def userLogin(request):
     if request.method == 'GET':
-        return render(request, 'User/login.html')
+        form = LoginForm()
+        context = {'title': 'User-Login',
+                   'form': form,
+                   'submitTitle': 'Login'}
+        return render(request, 'Form.html', context)
     elif request.method == 'POST':
-        username = request.POST['username']
-        password = request.POST['password']
-        user = authenticate(request, username=username, password=password)
-        if user is not None:
-            login(request, user)
-            return render(request, 'Action/success.html', {'action': 'login'})
-        else:
-            return redirect('/login/')
+        form = LoginForm(request.POST)
+
+        return render(request, 'Action/success.html', {'action': 'user login'})
 
 
 def mlogout(request):

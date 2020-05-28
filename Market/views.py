@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect
+from BOOM.modelform import CreateThingForm, CreateOrderForm
 from Market.models import Thing, Order
 
 
@@ -6,16 +7,15 @@ from Market.models import Thing, Order
 
 
 def createThing(request):
-    if request.method == "GET":
-        # the case which use haven't login
-        if request.user.is_authenticated:
-            return render(request, 'Market/createThing.html')
-        else:
-            return render(request, 'User/login.html')
-    elif request.method == "POST":
-        thing = Thing(name=request.POST['name'], file=request.FILES['file'], image=request.FILES['image'],
-                      description=request.POST['description'], owner=request.user)
-        thing.save()
+    if request.method == 'GET':
+        form = CreateThingForm(initial={'owner': request.user})
+        context = {'title': 'Thing-Create',
+                   'form': form,
+                   'submitTitle': 'Create'}
+        return render(request, 'Form.html', context)
+    elif request.method == 'POST':
+        form = CreateThingForm(request.POST)
+        form.save()
         return render(request, 'Action/success.html', {'action': 'create thing'})
 
 
@@ -30,27 +30,17 @@ def market(request):
 
 
 def createOrder(request, thingpk):
-    # get the thing through the pk of thing
     if request.method == 'GET':
-        # TODO: take the primary key of selected object as input, and display according information
-        # TODO: because we want to create multiple order in a time so the fronend should be modified
-        thing = Thing.objects.get(pk=thingpk)
-        return render(request, 'Market/createOrder.html', {'thing': thing})
+        form = CreateOrderForm(initial={'owner': request.user})
+        context = {'title': 'Order-Create',
+                   'form': form,
+                   'submitTitle': 'Create'}
+        return render(request, 'Form.html', context)
     elif request.method == 'POST':
-        # TODO: store the order into cookie
-        # TODO: create order state system.
-        pk = request.POST['thingpk']
-        cartID = giveID()
-        user = request.User
-        thing = Thing.objects.get(pk=thingpk)
-        amount = request.POST['amount']
-        price = amount * Thing.price
-        # TODO: create state trace system
-        state = 'CREATED'
-        # TODO: create order dispatcher, and the order management sytem
-        maker = dispatcher()
-        order = Order()
-        return redirect('/market/')
+        form = CreateOrderForm(request.POST)
+        form.save()
+        # TODO: the output should depends on OMS
+        return render(request, 'Action/success.html', {'action': 'create order'})
 
 # def confirmOrder(request):
 #     if request.method == 'GET':

@@ -43,7 +43,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'User',
     'Market',
-    'CMS'
+    'CMS',
+    'Printer'
 ]
 
 MIDDLEWARE = [
