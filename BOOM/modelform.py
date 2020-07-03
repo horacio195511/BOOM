@@ -2,7 +2,8 @@ from CMS.models import NEWS
 from Market.models import Thing, Order
 from Printer.models import Printer
 from User.models import User, Customer
-from django.forms import ModelForm
+from django.forms import ModelForm, Textarea
+from django import forms
 
 
 # TODO: migrate to ModelForm implementation
@@ -15,7 +16,11 @@ class RegisterForm(ModelForm):
 class LoginForm(ModelForm):
     class Meta:
         model = User
-        fields = ['email', 'password']
+        # TODO: there are some problem in this model and the view
+        fields = ['username', 'password']
+        widgets = {
+            'password': forms.PasswordInput()
+        }
 
 
 class CreateNewsForm(ModelForm):
@@ -28,6 +33,9 @@ class CreateThingForm(ModelForm):
     class Meta:
         model = Thing
         fields = ['name', 'file', 'image', 'description', 'owner', 'price']
+        widgets = {
+            'description': Textarea(attrs={'col': 50, 'row': 50})
+        }
 
 
 class CreatePrinterForm(ModelForm):

@@ -6,7 +6,7 @@ from CMS.models import NEWS
 
 # Create your views here.
 
-def createNews(request):
+def newscreate(request):
     if request.method == 'GET':
         form = CreateNewsForm()
         context = {'title': 'NEWS-Create',
@@ -15,7 +15,8 @@ def createNews(request):
                    'submitTitle': 'Create'}
         return render(request, 'Form.html', context)
     elif request.method == 'POST':
-        form = CreateNewsForm(request.POST)
+        form = CreateNewsForm(request.POST, request.FILES)
+        form.Image = request.FILES['image']
         form.save()
         return HttpResponse('NEWS Created')
 

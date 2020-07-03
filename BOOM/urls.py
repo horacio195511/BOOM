@@ -15,10 +15,10 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, re_path
-from User.views import register, mlogin, mlogout, home, profile
-from CMS.views import createNews, cms
-from Market.views import createThing, createOrder, market
-from Printer.views import createPrinter
+from User.views import usercreate, userlogin, userprofile, userlogout, home
+from CMS.views import newscreate, cms
+from Market.views import thingcreate, ordercreate, market, apithinglist
+from Printer.views import printercreate
 
 # TODO: the url setting now would infinitely concatethe url in the back, how to make it short?
 #   use
@@ -36,6 +36,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', home),
     # api url
+    re_path(r'api/thinglist/$', apithinglist)
     # news, thing, order could be accessed by user
     # re_path(r'api/usercreate/$'),
     # re_path(r'api/userlogin/$'),
@@ -43,6 +44,8 @@ urlpatterns = [
     # re_path(r'api/userprofile/$'),
     # re_path(r'api/userdelete/$'),
     # re_path(r'api/userupdate/$'),
+    # re_path(r'api/printercreate/$'),
+    # re_path(r'api/printerprofile/$'),
     # re_path(r'api/thingcreate/$'),
     # re_path(r'api/thingdelete/$'),
     # re_path(r'api/thingupdate/$'),

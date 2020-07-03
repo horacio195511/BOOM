@@ -1,6 +1,6 @@
 from django.db import models
 from BOOM.db_param import MaxLength
-
+from django.contrib.auth.models import User
 
 # Create your models here.
 
@@ -26,3 +26,4 @@ class Printer(models.Model):
     # TODO: printing quality is first set by maker and then score by user.
     quality = models.IntegerField()
     address = models.CharField(max_length=MaxLength.address)
+    owner = models.ForeignKey(User, on_delete=models.CASCADE)

@@ -7,10 +7,12 @@
 {% endblock %}
 
 {% block body %}
-<form method="post" enctype="multipart/form-data" action=''>
+<form method="POST" enctype="multipart/form-data">
     {% csrf_token%}
-    {{ form.as_table }}
-    <input type="submit" title={{ submitTitle }}>
+    <table>
+        {{ form.as_table}}
+    </table>
+    <input type="submit" value="{{ submitTitle }}">
 </form>
 
 {% endblock %}

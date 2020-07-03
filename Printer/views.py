@@ -5,14 +5,13 @@ from BOOM.modelform import CreatePrinterForm
 
 # Create your views here.
 
-def createPrinter(request):
+def printercreate(request):
     if request.method == 'GET':
         form = CreatePrinterForm()
         context = {'title': 'Printer-Create',
-                   'action': 'createPrinter',
                    'form': form,
                    'submitTitle': 'Create'}
-        return render(request, 'Printer/createPrinter.html', context)
+        return render(request, 'form', context)
     elif request.method == 'POST':
         form = CreatePrinterForm(request.POST)
         form.save()
