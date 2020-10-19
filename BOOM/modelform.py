@@ -6,7 +6,6 @@ from django.forms import ModelForm, Textarea
 from django import forms
 
 
-# TODO: migrate to ModelForm implementation
 class RegisterForm(ModelForm):
     class Meta:
         model = User
@@ -16,7 +15,6 @@ class RegisterForm(ModelForm):
 class LoginForm(ModelForm):
     class Meta:
         model = User
-        # TODO: there are some problem in this model and the view
         fields = ['username', 'password']
         widgets = {
             'password': forms.PasswordInput()
@@ -47,4 +45,4 @@ class CreatePrinterForm(ModelForm):
 class CreateOrderForm(ModelForm):
     class Meta:
         model = Order
-        fields = ['thing', 'amount']
+        fields = ['thing', 'amount', 'sentTo']

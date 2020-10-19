@@ -22,13 +22,16 @@ STATICFILES_DIRS = [
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
+# access google api:
 SECRET_KEY = 'hym21m2km5-#%83p-#dhxup3x%=sm80d_#sc9yb+g*zpmo#b5^'
 GOOGLEMAPAPIKEY = 'AIzaSyDZWqVPvMlzfETPIvrFkX1gNM6ab7WrIGI'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    '10.0.2.2'
+]
 
 
 # Application definition

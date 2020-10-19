@@ -20,8 +20,6 @@ from CMS.views import newscreate, cms
 from Market.views import thingcreate, ordercreate, market, apithinglist
 from Printer.views import printercreate
 
-# TODO: the url setting now would infinitely concatethe url in the back, how to make it short?
-#   use
 urlpatterns = [
     re_path(r'usercreate/$', usercreate, name='boom-register'),
     re_path(r'userlogin/$', userlogin, name='boom-login'),

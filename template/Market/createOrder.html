@@ -1,9 +1,17 @@
 {% extends '../extends/base.html' %}
 
 {% block title %}
-<title>Buy Thing</title>
+<title>Create Order</title>
 {% endblock%}
 
 {% block body %}
 <h1>{{ thing.name }}</h1>
+<img src="/media/{{ thing.image }}">
+<h2>Description</h2>
+<h3>{{ thing.description }}</h3>
+<h2>Owner</h2>
+<h3>{{ thing.owner }}</h3>
+<h2>Price</h2>
+<h3>{{ thing.price}}</h3>
+<!--Automatically calculate the price with javascript here-->
 {% endblock %}

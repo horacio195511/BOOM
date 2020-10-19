@@ -10,6 +10,7 @@ class PrinterCompany(models.Model):
 
 
 class PrinterModel(models.Model):
+    # TODO: create the list of printer model for every company
     printer_company = models.ForeignKey(PrinterCompany, on_delete=models.CASCADE)
     name = models.CharField(max_length=MaxLength.name)
 
