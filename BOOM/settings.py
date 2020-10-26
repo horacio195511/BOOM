@@ -30,7 +30,8 @@ GOOGLEMAPAPIKEY = 'AIzaSyDZWqVPvMlzfETPIvrFkX1gNM6ab7WrIGI'
 DEBUG = True
 
 ALLOWED_HOSTS = [
-    '10.0.2.2'
+    '10.0.2.2',
+    '127.0.0.1'
 ]
 
 
@@ -62,8 +63,6 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'BOOM.urls'
-
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 TEMPLATES = [
     {

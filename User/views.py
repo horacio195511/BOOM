@@ -4,6 +4,7 @@ from django.contrib.auth import authenticate, login, logout
 from CMS.models import NEWS
 from Market.models import Thing
 from BOOM.modelform import LoginForm, RegisterForm
+from Printer.models import Printer
 from User.models import Customer
 
 
@@ -58,8 +59,10 @@ def userprofile(request):
         if request.user.is_authenticated:
             user = request.user
             userimage = user.customer.image
-            thing_list = Thing.objects.filter(owner=user.id)
+            thing_list = Thing.objects.filter(owner=user)
+            printer_list = Printer.objects.filter(owner=user)
             return render(request, 'User/profile.html',
-                          {'user': user, 'userimage': userimage, 'thing_list': thing_list})
+                          {'user': user, 'userimage': userimage, 'thing_list': thing_list,
+                           'printer_list': printer_list})
         else:
             return redirect('/login/')

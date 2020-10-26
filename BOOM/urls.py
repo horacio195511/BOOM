@@ -29,7 +29,7 @@ urlpatterns = [
     re_path(r'userprofile/$', userprofile, name='boom-profile'),
     re_path(r'thingcreate/$', thingcreate, name='boom-creatething'),
     re_path(r'ordercreate/(?P<thingpk>[0-9]*)/$', ordercreate, name='createorder'),
-    re_path(r'printercreate/$', printercreate),
+    re_path(r'printercreate/$', printercreate, name='boom-createprinter'),
     re_path(r'newscreate/$', newscreate),
     path('admin/', admin.site.urls),
     path('', home),

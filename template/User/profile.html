@@ -27,6 +27,10 @@
 </table>
 {% endfor %}
 <h1>Printer Information</h1>
-<!-- add printer model and app -->
-
+<a href="{% url 'boom-createprinter' %}">Add Printer!</a>
+{% for printer in printer_list %}
+<h3>{{ printer.name }}</h3>
+<h2>{{ printer.address }}</h2>
+<!-- may add the physical location on map later-->
+{% endfor %}
 {% endblock %}
