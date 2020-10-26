@@ -16,9 +16,8 @@ def newscreate(request):
         return render(request, 'Form.html', context)
     elif request.method == 'POST':
         form = CreateNewsForm(request.POST, request.FILES)
-        form.Image = request.FILES['image']
         form.save()
-        return HttpResponse('NEWS Created')
+        return render(request, 'Action/success.html', {'action': 'news create'})
 
 
 def cms(request):
