@@ -25,7 +25,6 @@ def printercreate(request):
 # API veiw
 @csrf_exempt
 def modellistupdate(request):
-    # TODO: return an json file for the list
     if request.method == 'GET':
         # get the company name
         company = request.GET['company']
