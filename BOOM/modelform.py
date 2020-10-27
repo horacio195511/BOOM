@@ -37,7 +37,7 @@ class CreateThingForm(ModelForm):
 
 
 class CreatePrinterForm(ModelForm):
-    def __init__(self, company, *args, **kwargs):
+    def __init__(self, *args, **kwargs):
         super(CreatePrinterForm, self).__init__(*args, **kwargs)
         self.fields['model_company'].queryset = PrinterCompany.objects.values_list('name')
         self.fields['model_company'].widget.attrs.update({'onchange': 'reloadList()', 'id': 'model_company'})

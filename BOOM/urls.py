@@ -18,7 +18,7 @@ from django.urls import path, re_path
 from User.views import usercreate, userlogin, userprofile, userlogout, home
 from CMS.views import newscreate, cms
 from Market.views import thingcreate, ordercreate, market, apithinglist
-from Printer.views import printercreate
+from Printer.views import printercreate, modellistupdate
 
 urlpatterns = [
     re_path(r'usercreate/$', usercreate, name='boom-register'),
@@ -34,7 +34,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', home),
     # api url
-    re_path(r'api/thinglist/$', apithinglist)
+    re_path(r'api/thinglist/$', apithinglist),
     # news, thing, order could be accessed by user
     # re_path(r'api/usercreate/$'),
     # re_path(r'api/userlogin/$'),
@@ -44,6 +44,7 @@ urlpatterns = [
     # re_path(r'api/userupdate/$'),
     # re_path(r'api/printercreate/$'),
     # re_path(r'api/printerprofile/$'),
+    re_path(r'api/modellistupdate/$', modellistupdate),
     # re_path(r'api/thingcreate/$'),
     # re_path(r'api/thingdelete/$'),
     # re_path(r'api/thingupdate/$'),

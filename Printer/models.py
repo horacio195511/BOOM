@@ -10,7 +10,7 @@ class PrinterCompany(models.Model):
 
 
 class PrinterModel(models.Model):
-    # TODO: create the list of printer model for every company
+    # TODO: create web crawler for all of the printerModel
     printer_company = models.ForeignKey(PrinterCompany, on_delete=models.CASCADE)
     name = models.CharField(max_length=MaxLength.name)
 
