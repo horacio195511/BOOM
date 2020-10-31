@@ -7,32 +7,7 @@
 {% block body %}
 <form name="register" method="post" enctype="multipart/form-data">
     {% csrf_token %}
-    <table>
-        <tr>
-            <th><label for="username">UserName</label></th>
-            <th><input name="username" id="username" type="text"></th>
-        </tr>
-        <tr>
-            <th><label for="email">Email</label></th>
-            <th><input name='email' id="email" type="email"></th>
-        </tr>
-        <tr>
-            <th><label for="password">Password</label></th>
-            <th><input name='password' id="password" type="password"></th>
-        </tr>
-        <tr>
-            <th><label for="double_password">Double Check Password</label></th>
-            <th><input name="double_password" id="double_password" type="password"></th>
-        </tr>
-        <tr>
-            <th><label for="image">Image</label></th>
-            <th><input id="image" name="image" type="file"></th>
-        </tr>
-        <tr>
-            <th></th>
-            <th><input type="submit" value="Register"></th>
-        </tr>
-    </table>
+    {{ form }}
 </form>
 {{ op_error }}
 {% endblock %}

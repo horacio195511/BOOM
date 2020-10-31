@@ -5,3 +5,4 @@ class MaxLength:
     article = 1000
     image = 100
     state = 50
+    address = 1000

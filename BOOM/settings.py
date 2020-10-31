@@ -14,6 +14,7 @@ import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+# for web page get the media
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'media'), ]
 
@@ -22,12 +23,17 @@ STATICFILES_DIRS = [
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
+# access google api:
 SECRET_KEY = 'hym21m2km5-#%83p-#dhxup3x%=sm80d_#sc9yb+g*zpmo#b5^'
+GOOGLEMAPAPIKEY = 'AIzaSyDZWqVPvMlzfETPIvrFkX1gNM6ab7WrIGI'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    '10.0.2.2',
+    '127.0.0.1'
+]
 
 
 # Application definition
@@ -38,11 +44,13 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
+    'rest_framework',
     # static file means image, css, html...
     'django.contrib.staticfiles',
     'User',
     'Market',
-    'CMS'
+    'CMS',
+    'Printer'
 ]
 
 MIDDLEWARE = [
@@ -56,7 +64,7 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'BOOM.urls'
-
+# for modelform to uplaod the file
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 TEMPLATES = [

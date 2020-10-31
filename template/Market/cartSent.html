@@ -1,0 +1,17 @@
+{% extends '../extends/base.html' %}
+
+{% block title %}
+<title>Sent the Cart</title>
+{% endblock%}
+
+{% block body %}
+<h1>Order List</h1>
+{% for order in order_list %}
+<h2>{{ order.thing.name }}</h2>
+<h3>Amount</h3>
+<h4>{{ order.amount}}</h4>
+<h3>Price</h3>
+<h4>{{ order.price }}</h4>
+<h3>Maker</h3>
+<h4>{{ order.printer.owner.username}}</h4>
+{% endblock %}

@@ -1,0 +1,16 @@
+{% extends '../extends/base.html' %}
+
+{% block title %}
+<title>
+    {{ title }}
+</title>
+{% endblock %}
+
+{% block body %}
+<form method="post" enctype="multipart/form-data" action={{ action }}>
+    {% csrf_token%}
+    {{ form.as_table }}
+    <input type="submit" title={{ submitTitle }}>
+</form>
+
+{% endblock %}

@@ -8,29 +8,29 @@
 <h1>Personal Information</h1>
 <table>
     <tr>
-        <th>Image</th>
         <th><img src="/media/{{ userimage }}" alt="{{ user.username }}" height="100" width="100"></th>
     </tr>
     <tr>
-        <th>Username</th>
         <th>{{ user.username }}</th>
     </tr>
 </table>
 <h1>Thing Information</h1>
-<a href="creatething">Create Thing!</a>
+<a href="{% url 'boom-creatething' %}">Create Thing!</a>
 {% for thing in thing_list %}
 <table>
     <tr>
-        <th>Image</th>
-        <th>{{ thing.image }}</th>
+        <th><img src="/media/{{ thing.image }}" alt="{{ thing.name }}" height="100" width="100"></th>
     </tr>
     <tr>
-        <th>Name</th>
         <th>{{ thing.name }}</th>
     </tr>
 </table>
 {% endfor %}
 <h1>Printer Information</h1>
-<!-- add printer model and app -->
-
+<a href="{% url 'boom-createprinter' %}">Add Printer!</a>
+{% for printer in printer_list %}
+<h3>{{ printer.name }}</h3>
+<h2>{{ printer.address }}</h2>
+<!-- may add the physical location on map later-->
+{% endfor %}
 {% endblock %}
